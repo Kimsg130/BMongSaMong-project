@@ -40,7 +40,7 @@
             </ListView>
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/addAlarmButton"
                 android:layout_width="72dp"
                 android:layout_height="78dp"
                 android:layout_gravity="right"
