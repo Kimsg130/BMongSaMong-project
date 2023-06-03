@@ -1,2 +1,2 @@
 # BMongSaMong-project
-Kim &amp; Yu Legendary Project
+Kim &amp; Ryu Legendary Project
