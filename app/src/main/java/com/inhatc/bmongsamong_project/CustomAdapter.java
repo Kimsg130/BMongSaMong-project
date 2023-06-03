@@ -42,20 +42,9 @@ public class CustomAdapter extends BaseAdapter {
         TextView tv_item_title = (TextView) convertView.findViewById(R.id.item_title);
         TextView tv_item_date = (TextView) convertView.findViewById(R.id.item_date);
 
-
         tv_item_title.setText(alist.get(position).getTitle());
         tv_item_date.setText(alist.get(position).getDate());
         LinearLayout item_layout = (LinearLayout) convertView.findViewById(R.id.item_layout);
-//        item_layout.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                alist.remove(position);
-//                .notifyDataSetChanged();
-//                Toast.makeText(MainActivity.this, "Removed", Toast.LENGTH_SHORT).show();
-//
-//                return false;
-//            }
-//        });
 
         return convertView;
     }

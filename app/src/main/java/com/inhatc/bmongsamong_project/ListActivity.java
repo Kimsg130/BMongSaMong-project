@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -29,7 +30,7 @@ public class ListActivity extends AppCompatActivity {
     ArrayList<Item> aryItemList;
     ListView lstView;
     SQLiteHelper sqLiteHelper;
-    Button btn;
+    ImageButton btn;
 
 
     @Override
@@ -66,7 +67,7 @@ public class ListActivity extends AppCompatActivity {
         lstView.setAdapter(customAdapter);
 
         //버튼
-        btn = (Button) findViewById(R.id.addAlarmButton);
+        btn = findViewById(R.id.addAlarmButton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +84,17 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
+        lstView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item target = (Item) customAdapter.getItem(position);
+                int d_id = target.getD_id();
+
+                Intent intent = new Intent(getApplicationContext(), ShowAndEditDream.class);
+                intent.putExtra("d_id", d_id);
+                startActivity(intent);
+            }
+        });
     }
 
     public void customShowDialog(int position) {
@@ -109,7 +121,7 @@ public class ListActivity extends AppCompatActivity {
                 .setNegativeButton("취소", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
+                        closeContextMenu();
                     }
                 });
         AlertDialog msgDlg = msgBuilder.create();

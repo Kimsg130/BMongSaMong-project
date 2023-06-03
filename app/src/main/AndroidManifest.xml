@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -14,11 +15,17 @@
         android:theme="@style/Theme.BMongSaMong_Project"
         tools:targetApi="31">
         <activity
+            android:name=".ShowAndEditDream"
+            android:exported="false" />
+        <activity
+            android:name=".ShowAlarmAtivity"
+            android:exported="true" />
+        <activity
             android:name=".AlarmActivity"
             android:exported="false" />
         <activity
             android:name=".RecDreamActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ListActivity"
             android:exported="true"
@@ -43,17 +50,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-<!--장치가 부팅될 때 alarmReceiver가 동작할 수 있게-->
+        </activity> <!-- 장치가 부팅될 때 alarmReceiver가 동작할 수 있게 -->
         <receiver
             android:name=".AlarmReceiver"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

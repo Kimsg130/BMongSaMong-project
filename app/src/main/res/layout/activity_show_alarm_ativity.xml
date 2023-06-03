@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050740"
+    tools:context=".ShowAlarmAtivity">
+
+    <TextView
+        android:id="@+id/textTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginBottom="11dp"
+        android:text="00:00"
+        android:textColor="#FFFFFF"
+        android:textSize="96sp"
+        app:layout_constraintBottom_toTopOf="@+id/textExpain"
+        app:layout_constraintStart_toStartOf="@+id/textExpain"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textExpain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="132dp"
+        android:text="일어나세요! 꿈을 기록\n하셔야죠...!"
+        android:textAlignment="center"
+        android:textColor="#DAA8A7A7"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTime" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRec"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:background="#FF0000"
+        android:text="녹음하기"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:circularflow_defaultRadius="20dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textExpain" />
+
+    <Button
+        android:id="@+id/btnNo"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="97dp"
+        android:text="오늘은 건너뛰기"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRec" />
+</androidx.constraintlayout.widget.ConstraintLayout>
