@@ -22,9 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-    private FirebaseAuth mFirebaseAuth;             //firebase 인증
-    private DatabaseReference mDatabaseRef;         //실시간 데이터 베이스
     private EditText mEtEmail, mEtPwd;
     private Button mBtnRegister, mBtnLogin;
 
@@ -33,8 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
         mBtnLogin = findViewById(R.id.btn_login);
         mEtEmail = findViewById(R.id.et_email);
@@ -54,20 +49,15 @@ public class LoginActivity extends AppCompatActivity {
                 String strEmail = mEtEmail.getText().toString();
                 String strPwd = mEtPwd.getText().toString();
 
-                mFirebaseAuth.signInWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            //로그인 성공
-                            Toast.makeText(LoginActivity.this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(LoginActivity.this, "로그인을 실패했습니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+
+                if (strEmail.isEmpty() || strPwd.isEmpty() ) {
+                    Toast.makeText(LoginActivity.this, "빈칸없이 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(LoginActivity.this, CaptchaActivity.class);
+                    intent.putExtra("EMAIL", strEmail);
+                    intent.putExtra("PASSWORD", strPwd);
+                    startActivity(intent);
+                }
             }
         });
 

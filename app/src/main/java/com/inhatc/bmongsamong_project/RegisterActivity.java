@@ -43,6 +43,16 @@ public class RegisterActivity extends AppCompatActivity {
         mEtPwd2 = findViewById(R.id.et_pwd2);
         mBtnRegister = findViewById(R.id.btn_Register);
 
+
+        // 텍스트뷰 클릭시 이전화면으로 이동
+        TextView textView = findViewById(R.id.goBackToLogin);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
