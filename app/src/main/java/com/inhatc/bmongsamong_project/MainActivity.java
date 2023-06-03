@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message23");
-
-        myRef.setValue("BDSM");
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("message23");
+//
+//        myRef.setValue("BDSM");
     }
 }
