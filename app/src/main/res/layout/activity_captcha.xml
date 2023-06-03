@@ -1,0 +1,126 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#321F5A"
+    tools:context=".CaptchaActivity">
+
+    <ImageView
+        android:id="@+id/bottomImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/background_bottom"
+        android:layout_gravity="bottom|start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="background bottom" />
+
+    <ImageView
+        android:id="@+id/topImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/background_top"
+        android:layout_gravity="top|end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="background top" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/textLogo"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:src="@drawable/text_logo"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/loginContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="text logo" />
+
+
+        <RelativeLayout
+            android:id="@+id/loginContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/rounded_bg"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textLogo">
+
+            <TextView
+                android:id="@+id/tv_captcha"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="6dp"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="captcha"
+                android:textColor="#0000FF"
+                android:textStyle="bold|italic"
+                android:textSize="30sp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_captcha"
+                android:padding="10dp"
+                app:boxBackgroundColor="#F9F9F9"
+                app:boxStrokeWidth="1dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_chatchaCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="위에 보이는 텍스트를 입력하세요."/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_check"
+                android:layout_width="270dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/passwordInputLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="확인"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/goToBack"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/btn_check"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="뒤로가기"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceButton"
+                android:textColor="#787878"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
