@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,7 +57,6 @@ public class ListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //툴바의 뒤로가기 버튼 활성화
-
 
         //DB에서 아이디로 셀렉트
         Cursor allRCD = sqLiteHelper.getListItem(userId);
@@ -138,4 +139,25 @@ public class ListActivity extends AppCompatActivity {
         AlertDialog msgDlg = msgBuilder.create();
         msgDlg.show();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // toolbar_menu.xml 파일을 인플레이트합니다.
+        // 이 메뉴를 툴바에 추가합니다.
+        getMenuInflater().inflate(R.menu.list_toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                FirebaseAuth.getInstance().signOut(); //로그아웃
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
