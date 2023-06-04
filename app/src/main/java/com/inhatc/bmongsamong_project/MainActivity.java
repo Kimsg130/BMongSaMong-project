@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,12 +28,25 @@ public class MainActivity extends AppCompatActivity {
 
         // 버튼 클릭시 loginActivity 로 이동
         // 로그인 구현완료되면 로그인이 안되어있으면 로그인페이지로가게하고, 되어있다면 리스트페이지로 갈수있게 수정할계획
+
+
+
         Button button = findViewById(R.id.goToLogin);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    //로그인이 되어있을 때
+                    Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                    startActivity(intent);
+                } else {
+                    //로그인이 안되어있을 떄
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 

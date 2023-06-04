@@ -22,8 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Random;
 
 public class CaptchaActivity extends AppCompatActivity {
-
-    private FirebaseAuth mAuth;
     private FirebaseAuth mFirebaseAuth;             //firebase 인증
     private DatabaseReference mDatabaseRef;         //실시간 데이터 베이스
 

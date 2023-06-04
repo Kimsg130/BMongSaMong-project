@@ -20,11 +20,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
-    final String userId = "test1"; //테스트를 위한 유저아이디, TODO: 향후 로그인 기능이 완성되었을 때 변경
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     CustomAdapter customAdapter;
     ArrayList<Item> aryItemList;
@@ -32,6 +35,8 @@ public class ListActivity extends AppCompatActivity {
     SQLiteHelper sqLiteHelper;
     ImageButton btn;
 
+    String userId;
+    String UserUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,12 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         sqLiteHelper = new SQLiteHelper(getApplicationContext(), 1);
+
+        //로그인되어있는 정보 불러오기
+        if(user != null) {
+            userId = user.getEmail();
+            UserUid = user.getUid();
+        }
 
         //툴바 불러오기
         Toolbar toolbar = findViewById(R.id.toolbar);
