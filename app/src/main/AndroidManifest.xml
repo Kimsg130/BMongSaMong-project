@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -16,7 +17,7 @@
         tools:targetApi="31">
         <activity
             android:name=".ShowAndEditDream"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ShowAlarmAtivity"
             android:exported="true" />

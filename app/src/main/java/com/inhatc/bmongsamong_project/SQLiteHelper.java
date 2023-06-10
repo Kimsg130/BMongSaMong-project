@@ -36,7 +36,7 @@ public class SQLiteHelper extends SQLiteOpenHelper { //sqlite관련한 crud를 �
     }
 
     // Table 데이터 입력
-    public void insert(String userId, Blob blob, String memo) {
+    public void insert(String userId, byte[] blob, String memo) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("INSERT INTO dreams" +
                 " (userId, rec_dream, memo) VALUES (" +
@@ -61,6 +61,14 @@ public class SQLiteHelper extends SQLiteOpenHelper { //sqlite관련한 crud를 �
     public Cursor getListItem(String userId) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("select memo, dreamdate, d_id from dreams where userId='"+ userId +"'", null);
+//        db.close();
+
+        return cursor;
+    }
+
+    public Cursor getItemByD_id(int d_id) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("select memo, dreamdate, rec_dream from dreams where d_id='"+ d_id +"'", null);
 //        db.close();
 
         return cursor;
